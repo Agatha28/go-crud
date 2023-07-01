@@ -14,5 +14,6 @@ func main() {
 	http.HandleFunc("pasien/edit", pasiencontroller.Edit)
 	http.HandleFunc("pasien/delete", pasiencontroller.Delete)
 
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":4002", nil)
+
 }

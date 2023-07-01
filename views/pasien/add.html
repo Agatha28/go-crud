@@ -21,24 +21,16 @@
 
   <body>
     <div class="container mt-5">
-      <h3>Data Pasien</h3>
-      <a href="/pasien/add" class="btn btn-sm btn-primary">Tambah Data</a>
+      <h3>Tambah Data Pasien</h3>
+      <a href="/pasien" class="btn btn-sm btn-primary">Lihat Data</a>
     </hr>
 
-      <table class="table table-sriped table-hover">
-        <thead>
-          <tr>
-            <th>Nama Lengkap</th>
-            <th>NIK</th>
-            <th>Jenis Kelamin</th>
-            <th>Tempat Lahir</th>
-            <th>Tanggal Lahir</th>
-            <th>Alamat</th>
-            <th>No.HP</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
-      </table>
+      <form action="/pasien/add" method="post">
+            <div class="form-group">
+                <label for="">Nama Lengkap</label>
+                <input type="text" name="nama_lengkap" class="form-control">
+            </div>
+      </form>
     </div>
   </body>
 </html>

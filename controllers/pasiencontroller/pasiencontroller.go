@@ -1,12 +1,17 @@
 package pasiencontroller
 
 import (
-	"fmt"
 	"net/http"
+	"text/template"
 )
 
 func Index(response http.ResponseWriter, request *http.Request) {
-	fmt.Println("Its Working")
+
+	temp, err := template.ParseFiles("views/pasien/index.html")
+	if err != nil {
+		panic(err)
+	}
+	temp.Execute(response, nil)
 }
 
 func Add(response http.ResponseWriter, request *http.Request) {
