@@ -1,9 +1,12 @@
 package pasiencontroller
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 func Index(response http.ResponseWriter, request *http.Request) {
-
+	fmt.Println("Its Working")
 }
 
 func Add(response http.ResponseWriter, request *http.Request) {
