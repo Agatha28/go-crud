@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/Agatha28/go-crud/controllers/pasiencontroller"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	http.HandleFunc("/", pasiencontroller.Index)
 }
