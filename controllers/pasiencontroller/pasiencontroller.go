@@ -39,6 +39,8 @@ func Add(response http.ResponseWriter, request *http.Request) {
 		pasien.Alamat = request.Form.Get("alamat")
 		pasien.NoHP = request.Form.Get("no_hp")
 
+		pasienModel.Create(pasien)
+
 	}
 
 }
