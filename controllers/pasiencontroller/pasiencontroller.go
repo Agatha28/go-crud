@@ -1,12 +1,14 @@
 package pasiencontroller
 
 import (
-	"fmt"
 	"net/http"
 	"text/template"
 
 	"github.com/Agatha28/go-crud/entities"
+	"github.com/Agatha28/go-crud/models"
 )
+
+var pasienModel = models.NewPasienModel()
 
 func Index(response http.ResponseWriter, request *http.Request) {
 
@@ -37,7 +39,6 @@ func Add(response http.ResponseWriter, request *http.Request) {
 		pasien.Alamat = request.Form.Get("alamat")
 		pasien.NoHP = request.Form.Get("no_hp")
 
-		fmt.Println(pasien)
 	}
 
 }
