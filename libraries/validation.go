@@ -5,7 +5,7 @@ import (
 	"github.com/go-playground/validator/v10"
 )
 
-type validation struct {
+type Validation struct {
 	validate *validator.Validate
 	trans    ut.Translator
 }
