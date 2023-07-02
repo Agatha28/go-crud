@@ -36,4 +36,10 @@ func (v *Validation) Struct(s interface{}) interface{} {
 			errors[e.StructField()] = e.Translate(v.trans)
 		}
 	}
+
+	if len(errors) > 0 {
+		return errors
+	}
+
+	return nil
 }

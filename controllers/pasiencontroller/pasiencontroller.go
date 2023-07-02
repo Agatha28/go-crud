@@ -5,9 +5,11 @@ import (
 	"text/template"
 
 	"github.com/Agatha28/go-crud/entities"
+	"github.com/Agatha28/go-crud/libraries"
 	"github.com/Agatha28/go-crud/models"
 )
 
+var validation = libraries.NewValidation()
 var pasienModel = models.NewPasienModel()
 
 func Index(response http.ResponseWriter, request *http.Request) {
@@ -46,9 +48,15 @@ func Add(response http.ResponseWriter, request *http.Request) {
 		pasien.Alamat = request.Form.Get("alamat")
 		pasien.NoHP = request.Form.Get("no_hp")
 
-		pasienModel.Create(pasien)
-		data := map[string]interface{}{
-			"pesan": "Data berhasil di simpan",
+		var data = make(map[string]interface{})
+
+		vErrors := validation.Struct(pasien)
+
+		if vErrors != nil {
+			data["validation"] = vErrors
+		} else {
+			data["pesan"] = "Data pasien berhasil disimpan"
+			pasienModel.Create(pasien)
 		}
 
 		temp, _ := template.ParseFiles("views/pasien/add.html")
