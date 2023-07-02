@@ -26,3 +26,14 @@ func NewValidation() *Validation {
 		trans:    trans,
 	}
 }
+
+func (v *Validation) Struct(s interface{}) interface{} {
+	errors := make(map[string]string)
+
+	err := v.validate.Struct(s)
+	if err != nil {
+		for _, e := range err.(validator.ValidationErrors) {
+			errors[e.StructField()] = e.Translate(v.trans)
+		}
+	}
+}
