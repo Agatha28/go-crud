@@ -38,6 +38,22 @@
             <th>Aksi</th>
           </tr>
         </thead>
+        <tbody>
+          {{ for .pasien }}
+            <tr>
+              <td>{{ .NamaLengkap }}</td>
+              <td>{{ .NIK }}</td>
+              <td>{{ .JenisKelamin }}</td>
+              <td>{{ .TempatLahir }}</td>
+              <td>{{ .TanggalLahir }}</td>
+              <td>{{ .Alamat }}</td>
+              <td>{{ .NoHP }}</td>
+              <td>
+                <a href="/pasien/edit?id={{ .Id }}" class="btn btn-sm btn-warning">Edit</a>
+              </td>
+            </tr>
+          {{ end }}
+        </tbody>
       </table>
     </div>
   </body>
