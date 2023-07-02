@@ -39,7 +39,7 @@
           </tr>
         </thead>
         <tbody>
-          {{ for .pasien }}
+          {{ range .pasien }}
             <tr>
               <td>{{ .NamaLengkap }}</td>
               <td>{{ .NIK }}</td>
@@ -50,6 +50,7 @@
               <td>{{ .NoHP }}</td>
               <td>
                 <a href="/pasien/edit?id={{ .Id }}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/pasien/delete?id={{ .Id }}" onclick="return confirm('Apakah anda yakin ingin menghapus data?')" class="btn btn-sm btn-danger">Hapus</a>
               </td>
             </tr>
           {{ end }}

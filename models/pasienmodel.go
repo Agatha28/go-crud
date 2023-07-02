@@ -44,6 +44,12 @@ func (p *PasienModel) FindAll() ([]entities.Pasien, error) {
 			&pasien.Alamat,
 			&pasien.NoHP)
 
+		if pasien.JenisKelamin == "1" {
+			pasien.JenisKelamin = "Laki-laki"
+		} else {
+			pasien.JenisKelamin = "Perempuan"
+		}
+
 		dataPasien = append(dataPasien, pasien)
 	}
 
