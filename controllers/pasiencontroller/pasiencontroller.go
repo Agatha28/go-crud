@@ -28,6 +28,7 @@ func Add(response http.ResponseWriter, request *http.Request) {
 		}
 		temp.Execute(response, nil)
 	} else if request.Method == http.MethodPost {
+
 		request.ParseForm()
 
 		var pasien entities.Pasien
@@ -40,6 +41,12 @@ func Add(response http.ResponseWriter, request *http.Request) {
 		pasien.NoHP = request.Form.Get("no_hp")
 
 		pasienModel.Create(pasien)
+		data := map[string]interface{}{
+			"pesan": "Data berhasil di simpan",
+		}
+
+		temp, _ := template.ParseFiles("views/pasien/add.html")
+		temp.Execute(response, data)
 
 	}
 

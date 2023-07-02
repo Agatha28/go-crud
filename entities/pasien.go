@@ -8,5 +8,5 @@ type Pasien struct {
 	TempatLahir  string
 	TanggalLahir string
 	Alamat       string
-	NoHp         string
+	NoHP         string
 }
