@@ -1,6 +1,8 @@
 package libraries
 
 import (
+	"reflect"
+
 	"github.com/go-playground/locales/en"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
@@ -20,6 +22,20 @@ func NewValidation() *Validation {
 
 	validate := validator.New()
 	en_translations.RegisterDefaultTranslations(validate, trans)
+
+	//register tag label
+	validate.RegisterTagNameFunc(func(field reflect.StructField) string {
+		name := field.Tag.Get("label")
+		return name
+	})
+
+	//membuat custom error
+	validate.RegisterTranslation("required", trans, func(ut ut.Translator) error {
+		return ut.Add("required", "{0} harus diisi", true)
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("required", fe.Field())
+		return t
+	})
 
 	return &Validation{
 		validate: validate,
