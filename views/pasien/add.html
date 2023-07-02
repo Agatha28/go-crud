@@ -41,14 +41,14 @@
       <form action="/pasien/add" method="post">
             <div class="form-group">
                 <label for="">Nama Lengkap</label>
-                <input type="text" name="nama_lengkap" class="form-control {{ if .validation.NamaLengkap }} is-invalid {{ end }}">
+                <input type="text" name="nama_lengkap" value="{{ .pasien.NamaLengkap }}" class="form-control {{ if .validation.NamaLengkap }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                   {{ .validation.NamaLengkap }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">NIK</label>
-                <input type="text" name="nik" class="form-control {{ if .validation.NIK }} is-invalid {{ end }}">
+                <input type="text" name="nik" value="{{ .pasien.NIK }}" class="form-control {{ if .validation.NIK }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                   {{ .validation.NIK }}
                 </div>
@@ -57,8 +57,8 @@
                 <label for="">Jenis Kelamin</label>
                 <select name="jenis_kelamin" class="form-control {{ if .validation.JenisKelamin }} is-invalid {{ end }}">
                     <option value="">Pilih Jenis Kelamin</option>
-                    <option value="1">Laki-laki</option>
-                    <option value="2">Perempuan</option>
+                    <option {{ if eq .pasien.JenisKelamin `1` }} selected {{ end }} value="1">Laki-laki</option>
+                    <option {{ if eq .pasien.JenisKelamin `2` }} selected {{ end }} value="2">Perempuan</option>
                 </select>
                 <div class="invalid-feedback">
                   {{ .validation.JenisKelamin }}
@@ -66,28 +66,28 @@
             </div>
             <div class="form-group">
                 <label for="">Tempat Lahir</label>
-                <input type="text" name="tempat_lahir" class="form-control {{ if .validation.TempatLahir }} is-invalid {{ end }}">
+                <input type="text" name="tempat_lahir" value="{{ .pasien.TempatLahir }}" class="form-control {{ if .validation.TempatLahir }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                   {{ .validation.TempatLahir }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Tanggal Lahir</label>
-                <input type="date" name="tanggal_lahir" class="form-control {{ if .validation.TanggalLahir}} is-invalid {{ end }}">
+                <input type="date" name="tanggal_lahir" value="{{ .pasien.TanggalLahir}}" class="form-control {{ if .validation.TanggalLahir}} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                   {{ .validation.TanggalLahir }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">Alamat</label>
-                <textarea name="alamat" class="form-control {{ if .validation.Alamat }} is-invalid {{ end }}"></textarea>
+                <textarea name="alamat" class="form-control {{ if .validation.Alamat }} is-invalid {{ end }}">{{ .pasien.Alamat }}</textarea>
                 <div class="invalid-feedback">
                   {{ .validation.Alamat }}
                 </div>
             </div>
             <div class="form-group">
                 <label for="">No HP</label>
-                <input type="text" name="no_hp" class="form-control {{ if .validation.NoHP }} is-invalid {{ end }}">
+                <input type="text" name="no_hp" value="{{ .pasien.NoHP }}" class="form-control {{ if .validation.NoHP }} is-invalid {{ end }}">
                 <div class="invalid-feedback">
                   {{ .validation.NoHP }}
                 </div>
